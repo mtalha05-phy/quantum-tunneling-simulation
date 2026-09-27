@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qtunnel"
+version = "0.1.0"
+description = "Split-step Fourier solver for 1D quantum tunneling through a rectangular potential barrier"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [
+    { name = "Your Name" }
+]
+keywords = [
+    "quantum-mechanics",
+    "schrodinger-equation",
+    "quantum-tunneling",
+    "split-step-fourier",
+    "computational-physics",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.9",
+    "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/YOUR-USERNAME/quantum-tunneling-simulation"
+Repository = "https://github.com/YOUR-USERNAME/quantum-tunneling-simulation"
+
+[tool.setuptools]
+packages = ["qtunnel"]
