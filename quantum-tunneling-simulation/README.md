@@ -96,14 +96,7 @@ is solved with the split-step Fourier method. The time-evolution operator is spl
 $$\Psi(x, t+\Delta t) \approx e^{-\frac{i V \Delta t}{2\hbar}}\;\mathcal{F}^{-1}\!\left[e^{-\frac{i \hbar k^2 \Delta t}{2m}}\;\mathcal{F}\!\left[e^{-\frac{i V \Delta t}{2\hbar}}\,\Psi(x, t)\right]\right]$$
 
 
-is solved with the **split-step Fourier method**: the time-evolution
-operator is split into a potential half-step (applied in position
-space) and a kinetic full-step (applied in momentum space via FFT),
-which is accurate, fast, and unconditionally stable. Full derivation,
-the exact analytic transmission formula used for validation, and a
-documented numerical limitation are in **[docs/theory.md](docs/theory.md)**.
-
-## Validation
+## ✅ Validation
 
 Every result here is checked, not assumed:
 
@@ -112,23 +105,13 @@ Every result here is checked, not assumed:
 - The transmission-vs-energy scan (`sim4`) tracks the analytic curve closely, including resonance oscillations above V₀.
 - A known limitation — the simulated transmission floors out around 10⁻³ for very opaque barriers due to floating-point precision, not physics — is documented in `docs/theory.md` and in `sim5`'s output.
 
-## Running the tests
+## 🧪 Running the tests
 
 ```bash
 pip install -e ".[dev]"
 pytest -v
 ```
 
-## Roadmap / possible extensions
-
-- [ ] 2D or 3D tunneling
-- [ ] Time-dependent or oscillating barriers
-- [ ] Double-barrier resonant tunneling (quantum well)
-- [ ] WKB approximation comparison for smooth (non-rectangular) potentials
-- [ ] Crank-Nicolson solver as an alternative for non-periodic boundaries
-
-Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## License
+## 📄 License
 
 [MIT](LICENSE) — free to use, modify, and share.
