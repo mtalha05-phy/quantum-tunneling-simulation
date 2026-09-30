@@ -1,4 +1,4 @@
-# Quantum Tunneling Simulation
+# ⚛️ Quantum Tunneling Simulation
 
 **Numerical solution of the 1D time-dependent Schrödinger equation**,
 simulating a Gaussian wave packet tunneling through a rectangular
@@ -12,7 +12,7 @@ potential barrier via the split-step Fourier (split-operator) method.
   <img src="assets/tunneling_animation.gif" width="600" alt="Wave packet tunneling through a potential barrier">
 </p>
 
-## What this is
+## 🔭 Overview
 
 A particle's wave function hitting an energy barrier it classically
 shouldn't be able to cross — and quantum mechanics saying part of it
@@ -21,19 +21,18 @@ numerically (no approximations beyond standard discretization) to show
 exactly how much of the wave packet tunnels through, reflects back,
 and how that compares to the textbook analytic formula.
 
-## Features
+## ✨ Features
 
-- **Split-step Fourier solver** — `O(N log N)` per time step,
+- **⚡	Split-step Fourier solver** — `O(N log N)` per time step,
   unconditionally stable, exactly unitary for a real potential
-- **Absorbing boundaries** (complex absorbing potential) so wave
+- **🧱 Absorbing boundaries** (complex absorbing potential) so wave
   packets don't unphysically wrap around the periodic FFT grid
-- **Exact analytic benchmark** — every simulated result is checked
+- **📐 Exact analytic benchmark** — every simulated result is checked
   against the closed-form stationary-state transmission coefficient
-- Five ready-to-run scripts, each producing one publication-quality
+- **🎨 Five ready-to-run scripts**, each producing one publication-quality
   figure or animation
-- A small test suite (`pytest`) covering the core physics/numerics
 
-## Installation
+## 🚀 Installation
 
 ```bash
 git clone https://github.com/YOUR-USERNAME/quantum-tunneling-simulation.git
@@ -44,7 +43,7 @@ pip install -e .
 This installs the `qtunnel` package (numpy, scipy, and matplotlib are
 pulled in automatically). Python 3.9+ required.
 
-## Quickstart
+## ⚡ Quickstart
 
 ```bash
 cd simulations
@@ -55,7 +54,7 @@ Every script in `simulations/` also runs directly from a fresh clone
 without the `pip install` step (each has a small `sys.path` bootstrap),
 so `python simulations/sim1_snapshots.py` works too.
 
-## The five simulations
+## 🎬 The five simulations
 
 | Script | Output | Shows |
 |---|---|---|
