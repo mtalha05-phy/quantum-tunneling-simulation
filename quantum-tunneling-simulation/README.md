@@ -4,7 +4,6 @@
 simulating a Gaussian wave packet tunneling through a rectangular
 potential barrier via the split-step Fourier (split-operator) method.
 
-[![CI](https://github.com/YOUR-USERNAME/quantum-tunneling-simulation/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR-USERNAME/quantum-tunneling-simulation/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 
@@ -15,11 +14,11 @@ potential barrier via the split-step Fourier (split-operator) method.
 ## 🔭 Overview
 
 A particle's wave function hitting an energy barrier it classically
-shouldn't be able to cross — and quantum mechanics saying part of it
+shouldn't be able to cross and quantum mechanics saying part of it
 gets through anyway. This project solves the Schrödinger equation
 numerically (no approximations beyond standard discretization) to show
 exactly how much of the wave packet tunnels through, reflects back,
-and how that compares to the textbook analytic formula.
+and how that compares to the analytic formula.
 
 ## ✨ Features
 
@@ -64,58 +63,38 @@ so `python simulations/sim1_snapshots.py` works too.
 | `sim4_transmission_vs_energy.py` | `transmission_vs_energy.png` | Transmission coefficient vs energy, sim vs exact formula |
 | `sim5_barrier_width_effect.py` | `barrier_width_effect.png` | Transmission vs barrier width (log scale) |
 
-### 1. Snapshots
-
+### 1. 📸 Snapshots
+The animation displays the probability density |Ψ(x,t)|² as the wave packet approaches and interacts with the potential barrier.
 <p align="center"><img src="assets/tunneling_snapshots.png" width="800"></p>
 
-### 2. Space-time map
-
+### 2. 🗺️ Space-time map
+The space-time map represents the evolution of the probability density as a function of both position and time.
+It provides a compact view of the entire collision process.
 <p align="center"><img src="assets/tunneling_spacetime_map.png" width="500"></p>
 
-### 3. Transmission vs energy
-
+### 3. 📈 Transmission vs energy
+This simulation compares the numerically calculated transmission coefficient with the analytical solution.
 <p align="center"><img src="assets/transmission_vs_energy.png" width="500"></p>
 
-### 4. Transmission vs barrier width
-
+### 4. 📉 Transmission vs barrier width
+This investigates how changing the barrier width affects the probability of tunneling.
 <p align="center"><img src="assets/barrier_width_effect.png" width="700"></p>
 
 Each script has an editable parameter block at the bottom (barrier
 height/width, incoming momentum, grid resolution, etc.) — see the
 docstring at the top of each file for details.
 
-## Project structure
 
-```
-quantum-tunneling-simulation/
-├── qtunnel/                    # Installable package: the physics engine
-│   ├── __init__.py
-│   └── core.py                 # Grid, wave packet, barrier, propagator, diagnostics
-├── simulations/                # Standalone scripts, one per figure/animation
-│   ├── sim1_snapshots.py
-│   ├── sim2_animation.py
-│   ├── sim3_spacetime_map.py
-│   ├── sim4_transmission_vs_energy.py
-│   └── sim5_barrier_width_effect.py
-├── tests/
-│   └── test_core.py            # pytest suite for qtunnel/core.py
-├── docs/
-│   └── theory.md                # Full physics derivation and method write-up
-├── assets/                      # Sample output images used in this README
-├── .github/workflows/ci.yml    # Runs the test suite + a smoke test on push
-├── pyproject.toml
-├── requirements.txt
-├── LICENSE
-└── CONTRIBUTING.md
-```
-
-## The physics, briefly
+## 🧠 The physics
 
 The time-dependent Schrödinger equation
 
-```
-i·ħ ∂Ψ/∂t = -(ħ²/2m) ∂²Ψ/∂x² + V(x)Ψ
-```
+$$i\hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2} + V(x)\,\Psi$$
+
+is solved with the split-step Fourier method. The time-evolution operator is split into a potential half-step (applied in position space) and a kinetic full-step (applied in momentum space via FFT):
+
+$$\Psi(x, t+\Delta t) \approx e^{-\frac{i V \Delta t}{2\hbar}}\;\mathcal{F}^{-1}\!\left[e^{-\frac{i \hbar k^2 \Delta t}{2m}}\;\mathcal{F}\!\left[e^{-\frac{i V \Delta t}{2\hbar}}\,\Psi(x, t)\right]\right]$$
+
 
 is solved with the **split-step Fourier method**: the time-evolution
 operator is split into a potential half-step (applied in position
