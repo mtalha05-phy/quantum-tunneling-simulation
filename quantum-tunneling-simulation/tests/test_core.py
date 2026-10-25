@@ -1,16 +1,3 @@
-"""
-tests/test_core.py
-
-Basic sanity/regression tests for qtunnel.core. Run with:
-
-    pytest
-
-These are NOT a substitute for careful physical validation (see
-docs/theory.md and the discussion in the project README), but they
-catch obvious regressions: broken normalization, broken grid shapes,
-and wrong analytic-formula edge cases.
-"""
-
 import numpy as np
 import pytest
 
