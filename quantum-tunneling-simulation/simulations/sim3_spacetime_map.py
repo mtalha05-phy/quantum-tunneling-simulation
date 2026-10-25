@@ -1,30 +1,3 @@
-"""
-=====================================================================
- sim3_spacetime_map.py
- SIMULATION 3: Space-Time Probability Density Map
-=====================================================================
-
-WHAT THIS PRODUCES
--------------------
-A single 2D color-map image with:
-    x-axis  = position x
-    y-axis  = time t
-    color   = probability density |Psi(x,t)|^2
-
-This is one of the most information-dense figures you can put in a
-report: it shows the ENTIRE collision history in one static image —
-the incoming packet as a diagonal streak, the barrier as a vertical
-band, the reflected packet bouncing back, and the transmitted packet
-continuing onward — without needing an animation.
-
-HOW TO USE
-----------
-Just run this script:  python3 sim3_spacetime_map.py
-
-Output file: tunneling_spacetime_map.png
-=====================================================================
-"""
-
 import numpy as np
 import os
 import sys
