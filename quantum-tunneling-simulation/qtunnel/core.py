@@ -4,10 +4,8 @@ from scipy.fft import fft, ifft, fftfreq
 HBAR = 1.0
 MASS = 1.0
 
-
-# =====================================================================
 # SIMULATION PARAMETERS CONTAINER
-# =====================================================================
+
 class SimulationParams:
     """
     All tunable knobs for a single tunneling run. Each sim script
@@ -62,10 +60,8 @@ def suggested_n_steps(p: SimulationParams, safety=0.75):
     t_needed = safety * travel_distance / v_group
     return max(50, int(t_needed / p.dt))
 
-
-# =====================================================================
 # GRID CONSTRUCTION
-# =====================================================================
+
 def build_grid(p: SimulationParams):
     """Position grid x, spacing dx, and conjugate momentum grid k."""
     x = np.linspace(p.x_min, p.x_max, p.N, endpoint=False)
@@ -73,10 +69,8 @@ def build_grid(p: SimulationParams):
     k = 2 * np.pi * fftfreq(p.N, d=dx)
     return x, dx, k
 
-
-# =====================================================================
 # INITIAL WAVE PACKET
-# =====================================================================
+
 def gaussian_wave_packet(x, x0, k0, sigma):
     """
     Normalized initial Gaussian wave packet (minimum uncertainty state):
@@ -88,17 +82,14 @@ def gaussian_wave_packet(x, x0, k0, sigma):
     plane_wave = np.exp(1j * k0 * x)
     return norm * envelope * plane_wave
 
-
-# =====================================================================
 # POTENTIAL: BARRIER + ABSORBING BOUNDARY
-# =====================================================================
+
 def rectangular_barrier(x, V0, width, center):
     """A simple rectangular (square) potential barrier."""
     V = np.zeros_like(x)
     half = width / 2.0
     V[np.abs(x - center) <= half] = V0
     return V
-
 
 def absorbing_boundary(x, p: SimulationParams):
     """
@@ -122,10 +113,8 @@ def absorbing_boundary(x, p: SimulationParams):
     ) ** 2
     return eta
 
-
-# =====================================================================
 # SPLIT-STEP FOURIER PROPAGATOR
-# =====================================================================
+
 class SplitStepPropagator:
     """
     One symmetric (Strang) split-operator time step:
@@ -152,10 +141,8 @@ class SplitStepPropagator:
         psi = self.half_potential_phase * psi
         return psi
 
-
-# =====================================================================
 # DIAGNOSTICS
-# =====================================================================
+
 def probability_density(psi, dx):
     """Per-cell probability (sums to total norm)."""
     return np.abs(psi) ** 2 * dx
@@ -163,7 +150,6 @@ def probability_density(psi, dx):
 
 def total_norm(psi, dx):
     return np.sum(probability_density(psi, dx))
-
 
 def transmission_reflection(psi, x, dx, barrier_center, barrier_width):
     """Fraction of probability to the right (transmitted) / left (reflected)."""
@@ -174,7 +160,6 @@ def transmission_reflection(psi, x, dx, barrier_center, barrier_width):
     reflected = np.sum(prob[x < left_edge])
     under_barrier = np.sum(prob) - transmitted - reflected
     return transmitted, reflected, under_barrier
-
 
 def probability_current(psi, dx, hbar=HBAR, mass=MASS):
     """
@@ -196,10 +181,8 @@ def mean_energy(p: SimulationParams, hbar=HBAR, mass=MASS):
     """
     return (hbar ** 2 * p.k0 ** 2) / (2 * mass) + (hbar ** 2) / (8 * mass * p.sigma ** 2)
 
-
-# =====================================================================
 # ANALYTIC (EXACT) TRANSMISSION COEFFICIENT, RECTANGULAR BARRIER
-# =====================================================================
+
 def analytic_transmission(E, V0, a, hbar=HBAR, m=MASS):
     """
     Exact 1D stationary-state transmission coefficient (textbook result):
@@ -222,10 +205,8 @@ def analytic_transmission(E, V0, a, hbar=HBAR, m=MASS):
         k2 = np.sqrt(2 * m * (E - V0)) / hbar
         return 1.0 / (1.0 + (V0 ** 2 * np.sin(k2 * a) ** 2) / (4 * E * (E - V0)))
 
-
-# =====================================================================
 # FULL SIMULATION RUN (used by every sim script)
-# =====================================================================
+
 def run_simulation(p: SimulationParams, record_every=None, verbose=False):
     """
     Runs the full time evolution and returns a results dictionary:
