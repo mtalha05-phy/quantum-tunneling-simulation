@@ -1,34 +1,3 @@
-"""
-=====================================================================
- sim4_transmission_vs_energy.py
- SIMULATION 4: Transmission Coefficient vs Energy
-=====================================================================
-
-WHAT THIS PRODUCES
--------------------
-A line+scatter plot comparing:
-    - the EXACT analytic transmission coefficient T(E) for a plane
-      wave hitting a rectangular barrier (smooth black curve), and
-    - the SIMULATED transmission coefficient measured by actually
-      propagating a Gaussian wave packet at each energy (red dots).
-
-This reproduces the classic "tunneling probability curve": T rises
-steeply near E = V0 and shows resonance oscillations above it (the
-wave packet points sit close to, but not exactly on, the analytic
-curve because a wave packet has a spread of energies, not one single
-energy).
-
-HOW TO USE
-----------
-Just run this script:  python3 sim4_transmission_vs_energy.py
-
-Increase `n_energy_points` for a smoother-looking scatter (this
-re-runs the FULL simulation once per point, so it takes longer).
-
-Output file: transmission_vs_energy.png
-=====================================================================
-"""
-
 import numpy as np
 import os
 import sys
