@@ -1,34 +1,3 @@
-"""
-=====================================================================
- sim1_snapshots.py
- SIMULATION 1: Wave Packet Snapshots (Initial / Mid-Collision / Final)
-=====================================================================
-
-WHAT THIS PRODUCES
--------------------
-A single static image with THREE side-by-side panels showing the
-probability density |Psi(x)|^2 of the wave packet:
-
-    Panel 1: before it reaches the barrier
-    Panel 2: while it overlaps the barrier (interference visible)
-    Panel 3: after the collision, split into transmitted + reflected parts
-
-This is the classic "textbook figure" for a tunneling report: it shows
-the whole story of the collision in one picture.
-
-HOW TO USE
-----------
-Just run this script:  python3 sim1_snapshots.py
-
-Edit the parameters in the `if __name__ == "__main__":` block at the
-bottom to change the barrier height/width or the packet's energy —
-e.g. set p.k0 lower than sqrt(2*V0) to see genuine sub-barrier
-tunneling (E < V0), or higher to see above-barrier scattering.
-
-Output file: tunneling_snapshots.png
-=====================================================================
-"""
-
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
