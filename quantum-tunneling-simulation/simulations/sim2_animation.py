@@ -1,16 +1,3 @@
-"""
-=====================================================================
- sim2_animation.py
- SIMULATION 2: Animated GIF of the Wave Packet Crossing the Barrier
-=====================================================================
-
-WHAT THIS PRODUCES
--------------------
-An animated GIF showing |Psi(x,t)|^2 evolving in real time as the wave
-packet approaches, partially reflects off, and partially tunnels
-through the potential barrier. Great for a presentation slide or a
-project demo (as opposed to a single static figure).
-
 HOW TO USE
 ----------
 Just run this script:  python3 sim2_animation.py
@@ -19,7 +6,6 @@ Tune `n_frames` for a smoother (more frames, bigger file) or lighter
 (fewer frames, smaller file) GIF. `fps` controls playback speed.
 
 Output file: tunneling_animation.gif
-=====================================================================
 """
 
 import os
