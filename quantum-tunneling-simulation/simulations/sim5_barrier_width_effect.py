@@ -1,35 +1,3 @@
-"""
-=====================================================================
- sim5_barrier_width_effect.py
- SIMULATION 5: Effect of Barrier Width on Tunneling
-=====================================================================
-
-WHAT THIS PRODUCES
--------------------
-Two panels in one figure:
-
-  Left panel:  Transmission coefficient T vs barrier width `a`,
-               for a FIXED incoming energy E < V0 (genuine tunneling
-               regime). Shows the expected exponential-like drop in
-               tunneling probability as the barrier gets wider.
-
-  Right panel: The final (post-collision) probability density curves
-               for a few representative barrier widths, overlaid, so
-               you can visually compare how much probability leaks
-               through a thin barrier vs a thick one.
-
-This is a great complementary figure to sim4 (which fixes the barrier
-and scans energy) — here we fix the energy and scan the barrier
-geometry instead.
-
-HOW TO USE
-----------
-Just run this script:  python3 sim5_barrier_width_effect.py
-
-Output file: barrier_width_effect.png
-=====================================================================
-"""
-
 import numpy as np
 import os
 import sys
