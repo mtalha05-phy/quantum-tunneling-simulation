@@ -1,27 +1,3 @@
-"""
-=====================================================================
- qtunnel_core.py
- SHARED PHYSICS ENGINE for the Quantum Tunneling simulation series
-=====================================================================
-
-This module contains ONLY the reusable physics/numerics: grid setup,
-the initial wave packet, the potential barrier, the absorbing boundary,
-the split-step Fourier propagator, and the diagnostic/analytic
-formulas. It does NOT run a simulation or make plots by itself.
-
-Each "simN_....py" script in this project IMPORTS this module and
-uses it to build one specific figure or animation. This way:
-  - the physics is written and tested in exactly one place,
-  - every simulation script stays short and focused on ONE picture,
-  - you can safely tweak parameters in one sim script without
-    breaking the others.
-
-Keep this file in the same folder as the simN_*.py scripts.
-
-Units convention: hbar = 1, m = 1 (natural units).
-=====================================================================
-"""
-
 import numpy as np
 from scipy.fft import fft, ifft, fftfreq
 
